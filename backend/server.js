@@ -4,6 +4,7 @@ import cors from 'cors';
 import { pino } from 'pino';
 import pinoHttp from 'pino-http';
 import authRoutes from './routes/authRoutes.js';
+import noteRoutes from './routes/noteRoutes.js';
 
 dotenv.config();
 
@@ -26,6 +27,7 @@ app.get('/api/health', (req, res) => {
 });
 
 app.use('/api/auth', authRoutes);
+app.use('/api/notes', noteRoutes);
 
 app.use((err, req, res, next) => {
   req.log.error({ err: err.message, stack: err.stack }, 'Server error');
