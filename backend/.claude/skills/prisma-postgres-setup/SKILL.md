@@ -103,7 +103,7 @@ Use the **direct** connection string (`endpoints.direct.connectionString`). Do n
 
 If the response status is `provisioning`, wait a few seconds and poll `GET /v1/databases/<database-id>` until `status` is `ready`.
 
-**If creation fails due to a database limit**, list the user's existing projects and present them as an interactive menu for deletion. After the user picks one, delete it and retry.
+**If creation fails due to a database limit**, list the user's existing projects and require explicit user confirmation displaying the exact project ID and name before deletion. Do not automatically delete projects or retry provisioning without explicit approval.
 
 Read `references/endpoints.md` for the full request/response shapes.
 

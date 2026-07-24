@@ -106,8 +106,8 @@ The `tx` parameter is a Prisma Client scoped to the transaction:
 ```typescript
 await prisma.$transaction(async (tx) => {
   // Use tx instead of prisma
-  await tx.user.create({ ... })
-  await tx.post.create({ ... })
+  await tx.user.create({ data: { name: "Example User" } })
+  await tx.post.create({ data: { title: "Example Post" } })
   
   // Can call methods
   const count = await tx.user.count()
