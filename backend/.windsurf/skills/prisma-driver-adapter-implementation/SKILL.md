@@ -359,7 +359,10 @@ export class MyAdapterFactory implements SqlMigrationAwareDriverAdapterFactory {
   }
 
   connectToShadowDb(): Promise<SqlDriverAdapter> {
-    const url = this.options?.shadowDatabaseUrl ?? this.config.url;
+    const url = this.options?.shadowDatabaseUrl;
+    if (!url) {
+      throw new Error("shadowDatabaseUrl is required to prevent executing operations against the primary database.");
+    }
     return Promise.resolve(new MyAdapter(openConnection(url)));
   }
 }
